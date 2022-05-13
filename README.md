@@ -54,7 +54,10 @@ We can create a group of IP in /etc/ansible/hosts, in that you have to write tha
 - but Now if you run playbook you will get an error telling that the ec2 user not have the power to run some commands
 
 - In Linux Any user that has all the power is also known as privilege user , The command which works in root user or privilege user will not run in the normal user (user you created ) AWS Linux bydefult come with ec2 user (which is known as normal user ) so , ec2 user not have a power to run all the commands
+
+
 ![image](https://user-images.githubusercontent.com/56449458/168219942-83de6020-81db-4c84-9e41-515eca4ed208.png)
+
 
 - If you want that normal user will have the all the power then it is known as privilege escalation.
 - sudo gives you the facility of privilege escalation
