@@ -99,12 +99,45 @@ code inside dockerce.yml playbook
         service:
                name: "docker" 
                state: started
-               enabled: yes    
+               enabled: yes 
+               
+- installing python for docker           
+          
+      - name: install docker-py pthon module
+        pip:
+          name: "docker-py"
+      - name: install docker-py python SDK
+        pip:
+          name: "docker-py"   
            
-        
-           
-           
-   -     
+- pulling httpd image  , creating a folder and coping html files 
+ 
+        - name: pull docker image named httpd
+          docker_image:
+              name: "httpd"
+        - name: Creating folder and copying html file...
+          file:
+             path: /webpages
+             state: directory
+        - name: Copying html files
+          copy:
+            src: "home.html"
+            dest: "/workspace/"
+
+- creating the httpd container
+
+      - name: creating container
+        docker_container: 
+                 name: web1
+                 image: httpd
+                 state: started
+                 exposed_ports: 
+                 - "80"
+                 ports:
+                 - "8888:80"
+                 volumes:
+                 - /workspace:/usr/local/apache2/htdocs/
+
            
    
 
