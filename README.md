@@ -88,5 +88,23 @@ code inside dockerce.yml playbook
              path: /etc/yum.repos.d/docker-ce.repo
              regexp: "rhel"
              replace: "centos"    
-
+ 
+- launching the docker 
+ 
+      - name: installing docker 
+        package:
+            name: "docker-ce"
+            state: present     
+      - name: starting service
+        service:
+               name: "docker" 
+               state: started
+               enabled: yes    
+           
+        
+           
+           
+   -     
+           
+   
 
