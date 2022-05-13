@@ -2,7 +2,7 @@
 
 ## STEPS TO DO THIS TASK :
 - ######   **Ansible Lab setup**
-- ######** Configure Docker**
+- ######   **Configure Docker**
 - ######   Start and enable Docker services
 - ######   Pull the httpd server image from the Docker Hub
 - ######  Launch Container and expose it
@@ -76,6 +76,17 @@ code inside dockerce.yml playbook
 
 ![image](https://user-images.githubusercontent.com/56449458/168220303-368647c0-d496-4dc1-9356-5b2a70c533fe.png)
 
+  **downloading the docker.repo at yum.repos.d location and updating the bug in repo file**
+ 
   
+     - name: Download docker.repo at yum.repos.d
+      get_url:
+          url: "https://download.docker.com/linux/rhel/docker-ce.repo"
+          dest: /etc/yum.repos.d
+    - name: updateing my bug in docker repo file
+      replace:
+             path: /etc/yum.repos.d/docker-ce.repo
+             regexp: "rhel"
+             replace: "centos"    
 
 
