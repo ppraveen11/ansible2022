@@ -74,9 +74,7 @@ We can create a group of IP in /etc/ansible/hosts, in that you have to write tha
 - Lets create a plabook for to configure docker-ce and to launch an container with httpd image
 code inside dockerce.yml playbook
 
-
-
-  **downloading the docker.repo at yum.repos.d location and updating the bug in repo file**
+ **downloading the docker.repo at yum.repos.d location and updating the bug in repo file**
  
   
      - name: Download docker.repo at yum.repos.d
@@ -88,6 +86,7 @@ code inside dockerce.yml playbook
              path: /etc/yum.repos.d/docker-ce.repo
              regexp: "rhel"
              replace: "centos"    
+             
  
 - launching the docker 
  
