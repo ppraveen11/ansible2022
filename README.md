@@ -78,11 +78,11 @@ code inside dockerce.yml playbook
  
   
      - name: Download docker.repo at yum.repos.d
-      get_url:
-          url: "https://download.docker.com/linux/rhel/docker-ce.repo"
-          dest: /etc/yum.repos.d
-    - name: updateing my bug in docker repo file
-      replace:
+       get_url:
+           url: "https://download.docker.com/linux/rhel/docker-ce.repo"
+           dest: /etc/yum.repos.d
+     - name: updateing my bug in docker repo file
+       replace:
              path: /etc/yum.repos.d/docker-ce.repo
              regexp: "rhel"
              replace: "centos"    
