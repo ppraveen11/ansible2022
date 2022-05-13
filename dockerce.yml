@@ -1,0 +1,49 @@
+    - name: Download docker.repo at yum.repos.d
+      get_url:
+          url: "https://download.docker.com/linux/rhel/docker-ce.repo"
+          dest: /etc/yum.repos.d
+    - name: updateing my bug in docker repo file
+      replace:
+             path: /etc/yum.repos.d/docker-ce.repo
+             regexp: "rhel"
+             replace: "centos"
+    - name: installing docker 
+      package:
+           name: "docker-ce"
+           state: present     
+   - name: starting service
+      service:
+             name: "docker" 
+             state: started
+             enabled: yes  
+ 
+   - name: install docker-py pthon module
+     pip:
+       name: "docker-py"
+   - name: install docker-py python SDK
+     pip:
+       name: "docker-py"
+   - name: pull docker image named httpd
+     docker_image:
+              name: "httpd"
+   - name: Creating folder and copying html file...
+     file:
+         path: /webpages
+         state: directory
+   - name: Copying html files
+     copy:
+         src: "home.html"
+         dest: "/workspace/"
+   - name: creating container
+     docker_container: 
+                 name: web1
+                 image: httpd
+                 state: started
+                 exposed_ports: 
+                 - "80"
+                 ports:
+                 - "8888:80"
+                 volumes:
+                 - /workspace:/usr/local/apache2/htdocs/    
+       
+            
